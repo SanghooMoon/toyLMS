@@ -7,5 +7,15 @@
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
-
+	
+	<!-- mappers.xml 에서 객체 반환시 타입 별칭 지정  -->
+	<typeAliases>
+		<typeAlias type="com.mycom.toyLMS.member.dto.Member" alias="Member"/>
+	</typeAliases>
+	
+	<!-- 사용할 mapper 등록 -->
+	<mappers>
+		<mapper resource="mapper/member-mappers.xml"/>
+	</mappers>
+	
 </configuration>

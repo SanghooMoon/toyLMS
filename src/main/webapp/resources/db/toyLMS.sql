@@ -27,6 +27,7 @@ COMMIT;
 INSERT INTO member VALUES('scott', 'tiger', '스캇', '010-1111-2222', '스마트웹', SYSDATE, 'N', 'STUDENT');
 COMMIT;
 
+SELECT * FROM member WHERE id='scott' AND pwd='tiger';
 
 
 
