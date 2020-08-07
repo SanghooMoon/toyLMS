@@ -3,13 +3,15 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>sanghoo_LMS</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+	
+	<!-- 공통 header 마크업 -->
+	<%@ include file="/resources/common/header.jsp" %>
+	
+	
+	
+	
 </body>
 </html>
