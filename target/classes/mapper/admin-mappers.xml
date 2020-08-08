@@ -21,6 +21,15 @@
 		</foreach>
 	</update>
 	
+	<!-- 가입 거절 쿼리문 -->
+	<delete id="reject">
+		DELETE FROM member WHERE id IN
+		<!-- 배열타입으로 직접 넘겼을때는 collection의 값을 array로 지정해야 합니다.  -->
+		<foreach collection="array" open="(" close=")" separator="," item="id">
+			#{id}
+		</foreach>
+	</delete>
+	
 	<!-- 반환되는 객체정보, type은 별칭사용(mybatis.config.xml) -->
 	<resultMap type="Member" id="MemberResult">
 		<id column="id" property="id"/>

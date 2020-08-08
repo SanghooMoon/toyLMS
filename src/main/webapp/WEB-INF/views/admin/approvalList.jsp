@@ -11,15 +11,15 @@
 			/* 체크안되있을 시 예외처리 추가해야함  */
 			
 			var theForm = document.approvalFrm;
-			theForm.method = "get";
+			theForm.method = "post";
 			theForm.action = "/admin/doApproval";
 			theForm.submit(); 
 			
 		};
 		
-		function doReject(){
+		function reject(){
 			var theForm = document.approvalFrm;
-			theForm.method = "get";
+			theForm.method = "post";
 			theForm.action = "/admin/reject";
 			theForm.submit();
 		}
@@ -58,7 +58,7 @@
 		</table>
 		<div class="buttons">
 				<button type="button" onclick="doApproval();">가입 승인</button>
-				<button type="button" onclick="doReject();">가입 취소</button>
+				<button type="button" onclick="reject();">가입 취소</button>
 		</div>
 	</form>
 	

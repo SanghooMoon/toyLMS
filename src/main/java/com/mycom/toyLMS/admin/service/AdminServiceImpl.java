@@ -33,9 +33,16 @@ public class AdminServiceImpl implements AdminService {
 
 	// 가입 승인
 	@Override
-	public void approval(String[] checkedIds) {
+	public void approval(String[] checkedList) {
 		// TODO Auto-generated method stub
-		aDAO.approval(sqlSession, checkedIds);
+		aDAO.approval(sqlSession, checkedList);
+	}
+	
+	// 가입 거절
+	@Override
+	public void reject(String[] checkedList) {
+		// TODO Auto-generated method stub
+		aDAO.reject(sqlSession, checkedList);
 	}
 	
 	

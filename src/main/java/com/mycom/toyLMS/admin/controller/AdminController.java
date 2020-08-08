@@ -55,10 +55,20 @@ public class AdminController {
 	
 	// 회원 승인(서비스)
 	@RequestMapping(value = "doApproval")
-	public String doApproval(@RequestParam("checked") String[] checkedIds) {
+	public String doApproval(@RequestParam("checked") String[] checkedList) {
 		System.out.println("doApproval()");
 		
-		aService.approval(checkedIds);
+		aService.approval(checkedList);
+		
+		return "forward:/admin/approvalList";
+	}
+	
+	// 회원 거절(서비스)
+	@RequestMapping(value = "reject")
+	public String reject(@RequestParam("checked") String[] checkedList) {
+		System.out.println("reject()");
+		
+		aService.reject(checkedList);
 		
 		return "forward:/admin/approvalList";
 	}

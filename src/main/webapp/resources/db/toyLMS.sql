@@ -33,3 +33,4 @@ SELECT * FROM member WHERE use='Y';
 
 UPDATE member SET use='Y' WHERE id IN('scott2', 'test1');
 
+DELETE FROM member WHERE id IN('scott2', 'test1');
