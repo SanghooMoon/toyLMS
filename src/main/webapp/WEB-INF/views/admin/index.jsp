@@ -12,7 +12,8 @@
 	
 	<h1>관리자 메인화면</h1>
 	
-	
+	<a href="/admin/memberList">회원 목록</a>
+	<a href="/admin/approvalList">가입요청 목록</a>
 	
 </body>
 </html>

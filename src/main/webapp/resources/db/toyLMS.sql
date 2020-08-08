@@ -24,10 +24,10 @@ INSERT INTO member VALUES('sanghoo', 'sanghoo', '상후', '010-3925-7715', 'ADMIN'
 COMMIT;
 
 -- 학생 테스트 계정 생성
-INSERT INTO member VALUES('scott', 'tiger', '스캇', '010-1111-2222', '스마트웹', SYSDATE, 'N', 'STUDENT');
+INSERT INTO member VALUES('scott2', 'tiger2', '스캇2', '010-1111-2222', '빅데이터', SYSDATE, 'N', 'STUDENT');
 COMMIT;
 
 SELECT * FROM member WHERE id='scott' AND pwd='tiger';
 
-
+SELECT * FROM member WHERE use='Y';
 
