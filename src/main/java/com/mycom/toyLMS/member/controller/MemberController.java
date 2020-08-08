@@ -1,5 +1,6 @@
 package com.mycom.toyLMS.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class MemberController {
 	
 	// 로그인 서비스
 	@RequestMapping(value="signIn")
-	public String login(@RequestParam("id") String id, @RequestParam("pwd") String pwd, HttpSession session) {
+	public String signIn(@RequestParam("id") String id, @RequestParam("pwd") String pwd, HttpSession session) {
 		// 로그인 화면에서 입력받은 값 확인
 //		System.out.println(id);
 //		System.out.println(pwd);
@@ -54,6 +55,23 @@ public class MemberController {
 	@RequestMapping(value="register")
 	public String register() {
 		return "register";
+	}
+	
+	// 회원가입 서비스
+	@RequestMapping(value="signUp")
+	public String signUp(HttpServletRequest request) {
+		System.out.println("signUp()");
+		
+		Member member = new Member();
+		member.setId(request.getParameter("id"));
+		member.setPwd(request.getParameter("pwd"));
+		member.setName(request.getParameter("name"));
+		member.setPhone(request.getParameter("phone"));
+		member.setMajor(request.getParameter("major"));
+		
+		mService.signUp(member);
+		
+		return "redirect:/member/login";
 	}
 	
 	

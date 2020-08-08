@@ -20,6 +20,11 @@ public class MemberDAO {
 		
 		return sqlSession.selectOne("memberMapper.login", hs);
 	}
+
+	public void signUp(SqlSessionTemplate sqlSession, Member member) {
+		// TODO Auto-generated method stub
+		sqlSession.update("memberMapper.signUp", member);
+	}
 	
 	
 }

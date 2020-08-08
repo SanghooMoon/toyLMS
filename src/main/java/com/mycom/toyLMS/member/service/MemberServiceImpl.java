@@ -22,6 +22,12 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return mDAO.login(sqlSession, id, pwd);
 	}
+
+	@Override
+	public void signUp(Member member) {
+		// TODO Auto-generated method stub
+		mDAO.signUp(sqlSession, member);
+	}
 	
 	
 }

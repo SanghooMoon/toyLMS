@@ -9,8 +9,8 @@
 			value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:XE" />
-		<property name="username" value="sanghoo" />
-		<property name="password" value="sanghoo" />
+		<property name="username" value="toyLMS" />
+		<property name="password" value="toyLMS" />
 		<property name="defaultAutoCommit" value="false" />
 	</bean>
 

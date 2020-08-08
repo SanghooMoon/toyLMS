@@ -7,6 +7,11 @@
 		SELECT * FROM member WHERE id=#{id} AND pwd=#{pwd}
 	</select>
 	
+	<!-- 회원가입을 위한 쿼리문 -->
+	<insert id="signUp" parameterType="Member">
+		INSERT INTO member VALUES(#{id}, #{pwd}, #{name}, #{phone}, #{major}, SYSDATE, 'N', 'STUDENT')
+	</insert>
+	
 	<!-- 반환되는 객체정보, type은 별칭사용(mybatis.config.xml) -->
 	<resultMap type="Member" id="MemberResult">
 		<id column="id" property="id"/>
