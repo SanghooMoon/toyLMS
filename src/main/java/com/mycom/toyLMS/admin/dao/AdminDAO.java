@@ -15,4 +15,9 @@ public class AdminDAO {
 		return (ArrayList)sqlSession.selectList("adminMapper.memberList");
 	}
 
+	public ArrayList<Member> approvalList(SqlSessionTemplate sqlSession) {
+		// TODO Auto-generated method stub
+		return (ArrayList)sqlSession.selectList("adminMapper.approvalList");
+	}
+
 }

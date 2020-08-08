@@ -8,4 +8,6 @@ public interface AdminService {
 
 	ArrayList<Member> memberList();
 
+	ArrayList<Member> approvalList();
+
 }

@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>회원 목록</title>
+<title>가입 요청 목록</title>
 </head>
 <body>
 
@@ -11,7 +11,7 @@
 	<%@ include file="/resources/common/header.jsp"%>
 
 
-	<h1>회원목록</h1>
+	<h1>가입 요청 목록</h1>
 
 	<table>
 		<tr>
@@ -22,18 +22,15 @@
 			<th>가입일</th>
 			<th>등급</th>
 		</tr>
-		<c:forEach items="${memberList}" var="member">
+		<c:forEach items="${approvalList}" var="member">
 			<tr>
 				<td>${member.id }</td>
 				<td>${member.name }</td>
 				<td>${member.phone }</td>
 				<td>${member.major}</td>
 				<td>${member.indate }</td>
-				<td><select name="grade">
-						<option>${member.grade }</option>
-						<option>ADMIN</option>
-						<option>NORMAL</option>
-				</select></td>
+				<td>${member.grade }</td>
+				<td><input type="checkbox" value="${member.id }" name="checked"></td>
 			</tr>
 		</c:forEach>
 	</table>

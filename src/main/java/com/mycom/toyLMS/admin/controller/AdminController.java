@@ -40,4 +40,14 @@ public class AdminController {
 		
 		return "memberList";
 	}
+	
+	@RequestMapping(value = "approvalList")
+	public String approvalList(Model model) {
+		
+		// 가입요청한 목록 조회
+		ArrayList<Member> approvalList = aService.approvalList();
+		model.addAttribute("approvalList", approvalList);
+		
+		return "approvalList";
+	}
 }
