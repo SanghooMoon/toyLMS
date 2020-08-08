@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycom.toyLMS.admin.service.AdminService;
 import com.mycom.toyLMS.member.dto.Member;
@@ -41,6 +42,7 @@ public class AdminController {
 		return "memberList";
 	}
 	
+	// 가입요청 페이지로 이동(가입을 요청한 회원 목록 표시)
 	@RequestMapping(value = "approvalList")
 	public String approvalList(Model model) {
 		
@@ -49,5 +51,15 @@ public class AdminController {
 		model.addAttribute("approvalList", approvalList);
 		
 		return "approvalList";
+	}
+	
+	// 회원 승인(서비스)
+	@RequestMapping(value = "doApproval")
+	public String doApproval(@RequestParam("checked") String[] checkedIds) {
+		System.out.println("doApproval()");
+		
+		aService.approval(checkedIds);
+		
+		return "forward:/admin/approvalList";
 	}
 }

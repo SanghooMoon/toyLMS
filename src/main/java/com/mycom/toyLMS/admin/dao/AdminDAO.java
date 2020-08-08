@@ -20,4 +20,9 @@ public class AdminDAO {
 		return (ArrayList)sqlSession.selectList("adminMapper.approvalList");
 	}
 
+	public void approval(SqlSessionTemplate sqlSession, String[] checkedIds) {
+		// TODO Auto-generated method stub
+		sqlSession.update("adminMapper.approval", checkedIds);
+	}
+
 }

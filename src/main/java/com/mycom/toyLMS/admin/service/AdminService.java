@@ -10,4 +10,6 @@ public interface AdminService {
 
 	ArrayList<Member> approvalList();
 
+	void approval(String[] checkedIds);
+
 }

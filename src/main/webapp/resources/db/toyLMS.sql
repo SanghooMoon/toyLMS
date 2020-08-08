@@ -31,3 +31,5 @@ SELECT * FROM member WHERE id='scott' AND pwd='tiger';
 
 SELECT * FROM member WHERE use='Y';
 
+UPDATE member SET use='Y' WHERE id IN('scott2', 'test1');
+
