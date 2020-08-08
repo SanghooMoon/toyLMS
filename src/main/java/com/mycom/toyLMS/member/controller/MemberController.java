@@ -35,7 +35,14 @@ public class MemberController {
 		if(member!=null) {
 			System.out.println("로그인 성공");
 			session.setAttribute("loginUserInfo", member);
-			return "redirect:/";
+			
+			// 로그인한 아이디가 관리자이면 관리자 메인화면으로 이동
+			if(member.getGrade().equals("ADMIN")) {
+				return "redirect:/admin/index";
+			} else {
+				return "redirect:/";
+			}
+			
 		} else {
 			System.out.println("로그인 실패");
 			return "login";
