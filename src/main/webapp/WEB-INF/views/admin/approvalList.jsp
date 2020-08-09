@@ -8,8 +8,21 @@
 	
 	<script>
 		function doApproval(){
-			/* 체크안되있을 시 예외처리 추가해야함  */
 			
+			var checked = document.getElementsByName("checked");
+			var check = false;
+			// 모두 확인하여 하나라도 체크가 되어있으면 true
+			for(var i=0; i<checked.length; i++){
+				if(checked[i].checked) {
+					check = true;
+				}
+			}
+			// 만약 체크가 아무것도 안되있으면 종료
+			if(!check) {
+				alert("아무것도 선택되지않았습니다.");
+				return false;
+			}
+				
 			var theForm = document.approvalFrm;
 			theForm.method = "post";
 			theForm.action = "/admin/doApproval";
@@ -18,6 +31,20 @@
 		};
 		
 		function reject(){
+			var checked = document.getElementsByName("checked");
+			var check = false;
+			// 모두 확인하여 하나라도 체크가 되어있으면 true
+			for(var i=0; i<checked.length; i++){
+				if(checked[i].checked) {
+					check = true;
+				}
+			}
+			// 만약 체크가 아무것도 안되있으면 종료
+			if(!check) {
+				alert("아무것도 선택되지않았습니다.");
+				return false;
+			}
+			
 			var theForm = document.approvalFrm;
 			theForm.method = "post";
 			theForm.action = "/admin/reject";
@@ -44,6 +71,11 @@
 				<th>등급</th>
 				<th>승인</th>
 			</tr>
+			<c:if test="${ empty approvalList }">
+				<tr>
+					<td colspan="7">가입요청한 회원이 없습니다.</td>
+				</tr>
+			</c:if>
 			<c:forEach items="${approvalList}" var="member">
 				<tr>
 					<td>${member.id }</td>

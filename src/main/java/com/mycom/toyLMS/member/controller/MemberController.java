@@ -31,8 +31,10 @@ public class MemberController {
 //		System.out.println(id);
 //		System.out.println(pwd);
 		
-		Member member = mService.login(id, pwd);
-		if(member!=null) {
+		Member member = mService.login(id, pwd);	// 로그인
+		
+		// 아이디와 비밀번호가 일치하고, 승인받은 회원일때 로그인 성송
+		if(member!=null && member.getUse().equals("Y")) {
 			System.out.println("로그인 성공");
 			session.setAttribute("loginUserInfo", member);
 			

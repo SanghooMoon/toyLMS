@@ -23,6 +23,11 @@
 			<th>가입일</th>
 			<th>등급</th>
 		</tr>
+		<c:if test="${ empty memberList }">
+				<tr>
+					<td colspan="6">회원이 없습니다.</td>
+				</tr>
+			</c:if>
 		<c:forEach items="${memberList}" var="member">
 			<tr>
 				<td>${member.id }</td>
