@@ -62,6 +62,17 @@ ALTER TABLE member ADD CONSTRAINT MEMBER_FK FOREIGN KEY (major) REFERENCES MAJOR
 
 SELECT * FROM member, major where member.major = major.major AND id='scott';
 
+-- 게시판 테이블 생성
+CREATE TABLE board(
+    bno     NUMBER(10) PRIMARY KEY, 
+    id      VARCHAR2(20),
+    title 	VARCHAR2(50),
+	content	VARCHAR2(200),
+	indate	DATE DEFAULT SYSDATE
+);
+commit;
+
+SELECT * FROM board;
 
 
 

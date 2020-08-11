@@ -30,6 +30,7 @@
 							<li><a href="/member/logout" title="로그아웃">로그아웃</a></li>
 						</c:otherwise>
 					</c:choose>
+					<li><a href="/board/list" title="게시판">게시판</a></li>
 				</ul>
 			</div>
 		</div>

@@ -75,5 +75,23 @@
 		<servlet-name>AdminServlet</servlet-name>
 		<url-pattern>/admin/*</url-pattern>
 	</servlet-mapping>
+	
+	<!-- BoardServlet -->
+	<servlet>
+		<servlet-name>BoardServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/board-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>BoardServlet</servlet-name>
+		<url-pattern>/board/*</url-pattern>
+	</servlet-mapping>
+	
+	
 
 </web-app>
