@@ -74,8 +74,13 @@ commit;
 
 SELECT * FROM board;
 
+CREATE SEQUENCE bno_SEQ INCREMENT BY 1 START WITH 1;
 
+insert INTO board VALUES(bno_SEQ.NEXTVAL, 'sanghoo', '안녕하세요', '본문입니다', SYSDATE);
+insert INTO board VALUES(bno_SEQ.NEXTVAL, 'sanghoo', '안녕하세요2', '본문입니다2', SYSDATE);
+insert INTO board VALUES(bno_SEQ.NEXTVAL, 'test', 'test제목', 'test본문', SYSDATE);
 
+commit;
 
-
+SELECT * FROM board WHERE bno=1;
 

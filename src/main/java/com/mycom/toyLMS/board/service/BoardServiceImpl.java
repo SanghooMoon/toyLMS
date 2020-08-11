@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycom.toyLMS.board.dao.BoardDAO;
 import com.mycom.toyLMS.board.vo.Article;
+import com.mycom.toyLMS.common.vo.PageInfo;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -20,9 +21,9 @@ public class BoardServiceImpl implements BoardService{
 
 	// 전체 게시판 조회
 	@Override
-	public ArrayList<Article> showBoard() {
+	public ArrayList<Article> showBoard(PageInfo pi) {
 		// TODO Auto-generated method stub
-		return bDAO.selectBoard(sqlSession);
+		return bDAO.selectBoard(sqlSession, pi);
 	}
 
 	// 글 하나 조회
@@ -30,6 +31,12 @@ public class BoardServiceImpl implements BoardService{
 	public Article showDetail(int bno) {
 		// TODO Auto-generated method stub
 		return bDAO.selectArticle(sqlSession, bno);
+	}
+
+	@Override
+	public int listCount() {
+		// TODO Auto-generated method stub
+		return bDAO.selectListCount(sqlSession);
 	}
 	
 }

@@ -35,6 +35,23 @@
 		</c:forEach>
 	</table>
 	
+	<div class="paging-wrap">
+       <span>
+           <c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
+          		<c:if test="${p eq pi.currentPage}">
+           			<strong>${p}</strong>
+           		</c:if>
+           		<c:if test="${p ne pi.currentPage}">
+           			<c:url var="paging" value="${loc}">
+           				<c:param name="page" value="${p}"></c:param>
+           			</c:url>
+           			<a href="${paging }">${p}</a>
+           		</c:if>
+           </c:forEach>
+       </span>
+   </div>
+	
+	
 	
 </body>
 </html>
