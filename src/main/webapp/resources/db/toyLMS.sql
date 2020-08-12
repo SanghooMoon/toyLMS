@@ -84,3 +84,4 @@ commit;
 
 SELECT * FROM board WHERE bno=1;
 
+SELECT COUNT(*) FROM board;

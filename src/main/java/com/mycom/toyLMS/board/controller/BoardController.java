@@ -2,6 +2,8 @@ package com.mycom.toyLMS.board.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import com.mycom.toyLMS.board.service.BoardService;
 import com.mycom.toyLMS.board.vo.Article;
 import com.mycom.toyLMS.common.Pagenation;
 import com.mycom.toyLMS.common.vo.PageInfo;
+import com.mycom.toyLMS.member.dto.Member;
 
 @Controller
 public class BoardController {
@@ -46,21 +49,6 @@ public class BoardController {
 		return "board";
 	}
 	
-	
-//	@RequestMapping("view/*")
-//	public String detailArticle(HttpServletRequest request) {
-//		
-//		// 더 좋은 방법 없나? 근오형한테 물어보자, @pathValidate ? @requestBody
-//		String[] arr = request.getRequestURI().split("/");
-//		int bno = Integer.parseInt(arr[arr.length-1]);
-//		
-////		System.out.println(arr[arr.length-1]);
-//		Article article = bService.showDetail(bno);
-//		request.setAttribute("article", article);
-//		return "detail";
-//	}
-	
-	
 	@RequestMapping("view/{articleNo}")
 	public String test(@PathVariable String articleNo, Model model) {
 		System.out.println(articleNo);
@@ -71,5 +59,30 @@ public class BoardController {
 		return "detail";
 	}
 	
+	@RequestMapping("write")
+	public String writeGet(HttpSession session) {
+		
+		// 미로그인상태시 로그인화면으로 이동
+		if(session.getAttribute("loginUserInfo") == null) {
+			return "redirect:/member/login";
+		}
+		
+		return "write";
+	}
+	
+	@RequestMapping("dowrite")
+	public String writePost(@RequestParam("content") String content, @RequestParam("title") String title, HttpSession session) {
+		
+		Member member = (Member) session.getAttribute("loginUserInfo");
+		String id = member.getId();
+//		System.out.println("글 작성 제목 : " + title);
+//		System.out.println("글 작성 내용 : " + content);
+//		System.out.println("글 작성자 : " + id);
+		
+		bService.writeArticle(content, title, id);
+		
+		
+		return "redirect:/board/list";
+	}
 	
 }

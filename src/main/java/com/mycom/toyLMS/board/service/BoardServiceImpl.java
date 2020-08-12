@@ -32,11 +32,19 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		return bDAO.selectArticle(sqlSession, bno);
 	}
-
+	
+	// 글 전체 개수 조회
 	@Override
 	public int listCount() {
 		// TODO Auto-generated method stub
 		return bDAO.selectListCount(sqlSession);
+	}
+	
+	// 글 작성
+	@Override
+	public void writeArticle(String content, String title, String id) {
+		// TODO Auto-generated method stub
+		bDAO.insertArticle(sqlSession, content, title, id);
 	}
 	
 }

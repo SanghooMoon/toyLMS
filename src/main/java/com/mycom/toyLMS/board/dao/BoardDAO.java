@@ -33,6 +33,15 @@ public class BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("boardMapper.selectListCount");
 	}
+
+	public Object insertArticle(SqlSessionTemplate sqlSession, String content, String title, String id) {
+		// TODO Auto-generated method stub
+		HashMap<String, String> hs = new HashMap<String, String>();
+		hs.put("id", id);
+		hs.put("content", content);
+		hs.put("title", title);
+		return sqlSession.insert("boardMapper.insertArticle", hs);
+	}
 	
 	 
 	

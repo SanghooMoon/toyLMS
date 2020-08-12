@@ -14,6 +14,10 @@
 		SELECT COUNT(*) FROM BOARD
 	</select>
 	
+	<insert id="insertArticle">
+		INSERT INTO BOARD VALUES(BNO_SEQ.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE)
+	</insert>
+	
 	<resultMap type="Article" id="boardResult">
 		<id column="dno" property="dno"/>
 		<result column="id" property="id"/>

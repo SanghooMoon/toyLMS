@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +10,8 @@
 <body>
 
 	<!-- 공통 header 마크업 -->
-	<%@ include file="/resources/common/header.jsp" %>
-	
+	<%@ include file="/resources/common/header.jsp"%>
+
 	<h1>게시판 페이지</h1>
 	<table>
 		<tr>
@@ -34,24 +34,26 @@
 			</tr>
 		</c:forEach>
 	</table>
-	
+
 	<div class="paging-wrap">
-       <span>
-           <c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
-          		<c:if test="${p eq pi.currentPage}">
-           			<strong>${p}</strong>
-           		</c:if>
-           		<c:if test="${p ne pi.currentPage}">
-           			<c:url var="paging" value="${loc}">
-           				<c:param name="page" value="${p}"></c:param>
-           			</c:url>
-           			<a href="${paging }">${p}</a>
-           		</c:if>
-           </c:forEach>
-       </span>
-   </div>
-	
-	
-	
+		<span> <c:forEach var="p" begin="${pi.startPage }"
+				end="${pi.endPage }">
+				<c:if test="${p eq pi.currentPage}">
+					<strong>${p}</strong>
+				</c:if>
+				<c:if test="${p ne pi.currentPage}">
+					<c:url var="paging" value="${loc}">
+						<c:param name="page" value="${p}"></c:param>
+					</c:url>
+					<a href="${paging }">${p}</a>
+				</c:if>
+			</c:forEach>
+		</span>
+	</div>
+
+	<a href="/board/write">글쓰기</a>
+
+
+
 </body>
 </html>

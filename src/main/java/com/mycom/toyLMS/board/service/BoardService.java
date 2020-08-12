@@ -13,4 +13,6 @@ public interface BoardService {
 
 	int listCount();
 
+	void writeArticle(String content, String title, String id);
+
 }
