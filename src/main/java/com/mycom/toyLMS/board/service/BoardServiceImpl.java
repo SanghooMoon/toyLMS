@@ -47,4 +47,11 @@ public class BoardServiceImpl implements BoardService{
 		bDAO.insertArticle(sqlSession, content, title, id);
 	}
 	
+	// 글 수정
+	@Override
+	public void modifyArticle(Article article) {
+		// TODO Auto-generated method stub
+		bDAO.updateArticle(sqlSession, article);
+	}
+	
 }

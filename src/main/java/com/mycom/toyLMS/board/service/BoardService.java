@@ -15,4 +15,6 @@ public interface BoardService {
 
 	void writeArticle(String content, String title, String id);
 
+	void modifyArticle(Article article);
+
 }

@@ -42,6 +42,11 @@ public class BoardDAO {
 		hs.put("title", title);
 		return sqlSession.insert("boardMapper.insertArticle", hs);
 	}
+
+	public void updateArticle(SqlSessionTemplate sqlSession, Article article) {
+		// TODO Auto-generated method stub
+		sqlSession.update("boardMapper.updateArticle", article);
+	}
 	
 	 
 	

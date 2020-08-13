@@ -18,8 +18,12 @@
 		INSERT INTO BOARD VALUES(BNO_SEQ.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE)
 	</insert>
 	
+	<update id="updateArticle">
+		UPDATE board SET content=#{content}, title=#{title}, indate=SYSDATE WHERE bno=#{bno}
+	</update>
+	
 	<resultMap type="Article" id="boardResult">
-		<id column="dno" property="dno"/>
+		<id column="bno" property="bno"/>
 		<result column="id" property="id"/>
 		<result column="title" property="title"/>
 		<result column="content" property="content"/>

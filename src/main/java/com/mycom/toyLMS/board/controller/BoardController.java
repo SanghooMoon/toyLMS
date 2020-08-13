@@ -2,6 +2,7 @@ package com.mycom.toyLMS.board.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,6 @@ public class BoardController {
 		if(page!=null) {
 			currentPage = page;
 		}
-		
 		// 페이징 시작
 		// 글의 총 개수 가져오기(12)
 		int listCount = bService.listCount();
@@ -49,8 +49,9 @@ public class BoardController {
 		return "board";
 	}
 	
+	// 상세 글 보기
 	@RequestMapping("view/{articleNo}")
-	public String test(@PathVariable String articleNo, Model model) {
+	public String detail(@PathVariable String articleNo, Model model) {
 		System.out.println(articleNo);
 		
 		int bno = Integer.parseInt(articleNo);
@@ -81,8 +82,39 @@ public class BoardController {
 		
 		bService.writeArticle(content, title, id);
 		
+		return "redirect:/board/list";
+	}
+	
+	// 선택한 글의 내용을 가지고 수정하기 페이지로 이동
+	@RequestMapping("modify/{articleNo}")
+	public String modifyForm(@PathVariable String articleNo, Model model) {
+		System.out.println("수정화면");
+
+		int bno = Integer.parseInt(articleNo);
+		Article article = bService.showDetail(bno);
+		model.addAttribute("article", article);
+
+		return "modify";
+	}
+	
+	@RequestMapping("modify")
+	public String modify(HttpServletRequest request) {
+		System.out.println("수정시작");
+		
+//		System.out.println(request.getParameter("bno"));
+//		System.out.println(request.getParameter("title"));
+//		System.out.println(request.getParameter("content"));
+		int bno = Integer.parseInt(request.getParameter("bno"));
+		
+		Article article = new Article();
+		article.setBno(bno);
+		article.setTitle(request.getParameter("title"));
+		article.setContent(request.getParameter("content"));
+		
+		bService.modifyArticle(article);
 		
 		return "redirect:/board/list";
 	}
+	
 	
 }
