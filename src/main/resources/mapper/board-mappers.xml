@@ -22,6 +22,10 @@
 		UPDATE board SET content=#{content}, title=#{title}, indate=SYSDATE WHERE bno=#{bno}
 	</update>
 	
+	<delete id="deleteArticle">
+		DELETE FROM board WHERE BNO=#{bno}
+	</delete>
+	
 	<resultMap type="Article" id="boardResult">
 		<id column="bno" property="bno"/>
 		<result column="id" property="id"/>

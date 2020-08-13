@@ -47,6 +47,11 @@ public class BoardDAO {
 		// TODO Auto-generated method stub
 		sqlSession.update("boardMapper.updateArticle", article);
 	}
+
+	public void deleteArticle(SqlSessionTemplate sqlSession, int bno) {
+		// TODO Auto-generated method stub
+		sqlSession.delete("boardMapper.deleteArticle", bno);
+	}
 	
 	 
 	

@@ -71,8 +71,9 @@ public class BoardController {
 		return "write";
 	}
 	
+	// 글 작성
 	@RequestMapping("dowrite")
-	public String writePost(@RequestParam("content") String content, @RequestParam("title") String title, HttpSession session) {
+	public String write(@RequestParam("content") String content, @RequestParam("title") String title, HttpSession session) {
 		
 		Member member = (Member) session.getAttribute("loginUserInfo");
 		String id = member.getId();
@@ -88,7 +89,6 @@ public class BoardController {
 	// 선택한 글의 내용을 가지고 수정하기 페이지로 이동
 	@RequestMapping("modify/{articleNo}")
 	public String modifyForm(@PathVariable String articleNo, Model model) {
-		System.out.println("수정화면");
 
 		int bno = Integer.parseInt(articleNo);
 		Article article = bService.showDetail(bno);
@@ -97,9 +97,9 @@ public class BoardController {
 		return "modify";
 	}
 	
+	// 글 수정하기
 	@RequestMapping("modify")
 	public String modify(HttpServletRequest request) {
-		System.out.println("수정시작");
 		
 //		System.out.println(request.getParameter("bno"));
 //		System.out.println(request.getParameter("title"));
@@ -116,5 +116,14 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-	
+	// 글 삭제하기
+	@RequestMapping("delete/{articleNo}")
+	public String delete(@PathVariable String articleNo) {
+		
+		int bno = Integer.parseInt(articleNo);	// 삭제할 글 번호
+		
+		bService.deleteArticle(bno);
+		
+		return "redirect:/board/list";
+	}
 }

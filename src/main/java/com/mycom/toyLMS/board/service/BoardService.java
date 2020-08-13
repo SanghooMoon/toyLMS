@@ -17,4 +17,6 @@ public interface BoardService {
 
 	void modifyArticle(Article article);
 
+	void deleteArticle(int bno);
+
 }

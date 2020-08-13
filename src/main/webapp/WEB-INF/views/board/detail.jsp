@@ -8,6 +8,24 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/approval.css">
 <title>게시판</title>
+<script type="text/javascript">
+	
+	// 삭제
+	function dodelete(){
+			var theForm = document.articleFrm;
+			theForm.method = "post";
+			theForm.action = "/board/delete/${article.bno }";
+			theForm.submit();
+	}
+	
+	// 수정
+	function domodify(){
+		var theForm = document.articleFrm;
+		theForm.method = "post";
+		theForm.action = "/board/modify/${article.bno }";
+		theForm.submit();
+}
+	</script>
 </head>
 <body>
 
@@ -16,7 +34,7 @@
 
 	<h1>게시판 페이지</h1>
 
-	<form action="/board/modify/${article.bno }" method="post">
+	<form action="/board/modify/${article.bno }" name="articleFrm">
 		<table>
 			<tr>
 				<th>글번호</th>
@@ -34,7 +52,8 @@
 			</tr>
 		</table>
 		<c:if test="${loginUserInfo.id eq article.id}">
-			<input type="submit" value="수정하기">
+			<button type="button" onclick="domodify();">수정하기</button>
+			<button type="button" onclick="dodelete();">삭제하기</button>
 		</c:if>
 	</form>
 

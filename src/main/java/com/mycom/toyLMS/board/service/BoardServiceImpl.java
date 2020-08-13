@@ -54,4 +54,11 @@ public class BoardServiceImpl implements BoardService{
 		bDAO.updateArticle(sqlSession, article);
 	}
 	
+	// 글 삭제
+	@Override
+	public void deleteArticle(int bno) {
+		// TODO Auto-generated method stub
+		bDAO.deleteArticle(sqlSession, bno);
+	}
+	
 }
