@@ -153,8 +153,6 @@
 			<version>0.2.7</version>
 		</dependency>
 
-
-
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -162,6 +160,21 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Spring Mail -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		
+		<!-- Spring Mail -->
+		<dependency>
+		    <groupId>com.sun.mail</groupId>
+		    <artifactId>javax.mail</artifactId>
+		    <version>1.5.1</version>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<plugins>

@@ -9,7 +9,7 @@
 	
 	<!-- 회원가입을 위한 쿼리문 -->
 	<insert id="signUp" parameterType="Member">
-		INSERT INTO member VALUES(#{id}, #{pwd}, #{name}, #{phone}, #{major}, SYSDATE, 'N', 'STUDENT')
+		INSERT INTO member VALUES(#{id}, #{pwd}, #{name}, #{phone}, #{major}, SYSDATE, 'N', 'STUDENT', #{email})
 	</insert>
 	
 	<!-- 반환되는 객체정보, type은 별칭사용(mybatis.config.xml) -->
@@ -22,6 +22,7 @@
 		<result column="indate" property="indate"/>
 		<result column="use" property="use"/>
 		<result column="grade" property="grade"/>
+		<result column="email" property="email"/>
 	</resultMap>
 	
 	

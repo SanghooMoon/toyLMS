@@ -26,12 +26,28 @@
 		DELETE FROM board WHERE BNO=#{bno}
 	</delete>
 	
+	<insert id="insertReply">
+		INSERT INTO reply VALUES(RNO_SEQ.nextval, #{bno}, #{replytext}, #{replyid}, SYSDATE)
+	</insert>
+	
+	<select id="selectReply" resultMap="replyResult">
+		select * FROM reply WHERE bno=#{bno}
+	</select>
+	
 	<resultMap type="Article" id="boardResult">
 		<id column="bno" property="bno"/>
 		<result column="id" property="id"/>
 		<result column="title" property="title"/>
 		<result column="content" property="content"/>
 		<result column="indate" property="indate"/>
+	</resultMap>
+	
+	<resultMap type="Reply" id="replyResult">
+		<id column="rno" property="rno"/>
+		<result column="bno" property="bno"/>
+		<result column="replytext" property="replytext"/>
+		<result column="replyid" property="replyid"/>
+		<result column="redate" property="redate"/>
 	</resultMap>
 
 </mapper>

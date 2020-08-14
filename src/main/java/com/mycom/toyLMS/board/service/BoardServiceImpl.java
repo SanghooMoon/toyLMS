@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycom.toyLMS.board.dao.BoardDAO;
 import com.mycom.toyLMS.board.vo.Article;
+import com.mycom.toyLMS.board.vo.Reply;
 import com.mycom.toyLMS.common.vo.PageInfo;
 
 @Service
@@ -60,5 +61,23 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		bDAO.deleteArticle(sqlSession, bno);
 	}
+	
+	// 댓글 작성
+	@Override
+	public void addReply(Reply reply) {
+		// TODO Auto-generated method stub
+		bDAO.insertReply(sqlSession, reply);
+	}
+	
+	// 댓글가져오기
+	@Override
+	public ArrayList<Reply> showReply(int bno) {
+		// TODO Auto-generated method stub
+		return bDAO.selectReply(sqlSession, bno);
+	}
+
+	
+
+
 	
 }

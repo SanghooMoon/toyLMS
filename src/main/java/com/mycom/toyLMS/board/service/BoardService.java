@@ -3,6 +3,7 @@ package com.mycom.toyLMS.board.service;
 import java.util.ArrayList;
 
 import com.mycom.toyLMS.board.vo.Article;
+import com.mycom.toyLMS.board.vo.Reply;
 import com.mycom.toyLMS.common.vo.PageInfo;
 
 public interface BoardService {
@@ -18,5 +19,11 @@ public interface BoardService {
 	void modifyArticle(Article article);
 
 	void deleteArticle(int bno);
+
+	void addReply(Reply reply);
+
+	ArrayList<Reply> showReply(int bno);
+
+	
 
 }

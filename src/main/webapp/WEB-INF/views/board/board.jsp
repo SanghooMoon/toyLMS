@@ -52,7 +52,7 @@
 	</div>
 
 	<a href="/board/write">글쓰기</a>
-
+	
 
 
 </body>

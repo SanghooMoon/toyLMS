@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.mycom.toyLMS.board.vo.Article;
+import com.mycom.toyLMS.board.vo.Reply;
 import com.mycom.toyLMS.common.vo.PageInfo;
 
 @Repository
@@ -51,6 +52,16 @@ public class BoardDAO {
 	public void deleteArticle(SqlSessionTemplate sqlSession, int bno) {
 		// TODO Auto-generated method stub
 		sqlSession.delete("boardMapper.deleteArticle", bno);
+	}
+
+	public void insertReply(SqlSessionTemplate sqlSession, Reply reply) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("boardMapper.insertReply", reply);
+	}
+
+	public ArrayList<Reply> selectReply(SqlSessionTemplate sqlSession, int bno) {
+		// TODO Auto-generated method stub
+		return (ArrayList)sqlSession.selectList("boardMapper.selectReply", bno);
 	}
 	
 	 

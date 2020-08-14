@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycom.toyLMS.board.service.BoardService;
 import com.mycom.toyLMS.board.vo.Article;
+import com.mycom.toyLMS.board.vo.Reply;
 import com.mycom.toyLMS.common.Pagenation;
 import com.mycom.toyLMS.common.vo.PageInfo;
 import com.mycom.toyLMS.member.dto.Member;
@@ -56,7 +57,11 @@ public class BoardController {
 		
 		int bno = Integer.parseInt(articleNo);
 		Article article = bService.showDetail(bno);
+		ArrayList<Reply> replyList = bService.showReply(bno);
+		
 		model.addAttribute("article", article);
+		model.addAttribute("replyList", replyList);
+		
 		return "detail";
 	}
 	
@@ -125,5 +130,32 @@ public class BoardController {
 		bService.deleteArticle(bno);
 		
 		return "redirect:/board/list";
+	}
+	
+	// 댓글
+	@RequestMapping("reply/{articleNo}")
+	public String reply(@RequestParam("replytext") String replytext, @PathVariable String articleNo, HttpSession session) {
+		System.out.println("답글");
+		
+		
+		Member member = (Member) session.getAttribute("loginUserInfo");
+		// 미로그인 상태시 로그인
+//		if(member==null) {
+//			System.out.println("미로그인");
+//			
+//			return "redirect:/member/login";
+//		}
+		String id = member.getId();
+		
+		int bno = Integer.parseInt(articleNo);	// 댓글이 달릴 본 글번호
+		Reply reply = new Reply();
+		
+		reply.setBno(bno);
+		reply.setReplytext(replytext);
+		reply.setReplyid(id);
+		
+		bService.addReply(reply);
+		
+		return "redirect:/board/view/" + articleNo;
 	}
 }

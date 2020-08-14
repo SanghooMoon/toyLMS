@@ -12,6 +12,7 @@
 	<typeAliases>
 		<typeAlias type="com.mycom.toyLMS.member.dto.Member" alias="Member"/>
 		<typeAlias type="com.mycom.toyLMS.board.vo.Article" alias="Article"/>
+		<typeAlias type="com.mycom.toyLMS.board.vo.Reply" alias="Reply"/>
 	</typeAliases>
 	
 	<!-- 사용할 mapper 등록 -->

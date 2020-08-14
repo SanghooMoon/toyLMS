@@ -18,6 +18,9 @@ CREATE TABLE member(
 );
 COMMIT;
 
+-- 메일전송을 위한 member 테이블 수정(이메일 컬럼 추가)
+ALTER TABLE member ADD (email VARCHAR2(80));
+
 SELECT * FROM member;
 
 -- 슈퍼 관리자 계정 생성
@@ -85,3 +88,31 @@ commit;
 SELECT * FROM board WHERE bno=1;
 
 SELECT COUNT(*) FROM board;
+
+UPDATE board SET content='변경', title='제목변경',indate=SYSDATE WHERE bno=1;
+select * from board;
+commit;
+
+DELETE FROM board WHERE BNO=7;
+COMMIT;
+
+-- 댓글 테이블
+CREATE TABLE reply(
+    rno     NUMBER(10)  primary key,
+    bno     NUMBER(10),  
+    replytext VARCHAR2(100),
+    replyid   VARCHAR2(30),
+    redate    DATE DEFAULT SYSDATE,
+    CONSTRAINT FK_reply foreign key(bno) references board(bno)
+);
+
+CREATE SEQUENCE rno_SEQ INCREMENT BY 1 START WITH 1;
+
+select * FROM reply;
+
+INSERT INTO reply VALUES(RNO_SEQ.nextval, 1, 'text', 'scott', SYSDATE);
+COMMIT;
+
+select * FROM reply WHERE bno =1;
+
+
