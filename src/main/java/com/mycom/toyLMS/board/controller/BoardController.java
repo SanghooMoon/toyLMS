@@ -56,8 +56,12 @@ public class BoardController {
 		System.out.println(articleNo);
 		
 		int bno = Integer.parseInt(articleNo);
+		// 글 조회 및 답글 조회
 		Article article = bService.showDetail(bno);
 		ArrayList<Reply> replyList = bService.showReply(bno);
+		
+		// 조회수 1씩 증가, 글을 조회할때 수행되는 기능이므로 showDetail에서 구현
+//		bService.addHit(bno);
 		
 		model.addAttribute("article", article);
 		model.addAttribute("replyList", replyList);
@@ -137,14 +141,7 @@ public class BoardController {
 	public String reply(@RequestParam("replytext") String replytext, @PathVariable String articleNo, HttpSession session) {
 		System.out.println("답글");
 		
-		
 		Member member = (Member) session.getAttribute("loginUserInfo");
-		// 미로그인 상태시 로그인
-//		if(member==null) {
-//			System.out.println("미로그인");
-//			
-//			return "redirect:/member/login";
-//		}
 		String id = member.getId();
 		
 		int bno = Integer.parseInt(articleNo);	// 댓글이 달릴 본 글번호

@@ -19,6 +19,7 @@
 			<th>아이디</th>
 			<th>제목</th>
 			<th>작성일</th>
+			<th>조회수</th>
 		</tr>
 		<c:if test="${ empty list }">
 			<tr>
@@ -31,6 +32,7 @@
 				<td>${article.id }</td>
 				<td><a href="/board/view/${article.bno }">${article.title }</a></td>
 				<td>${article.indate}</td>
+				<td>${article.hit}</td>
 			</tr>
 		</c:forEach>
 	</table>

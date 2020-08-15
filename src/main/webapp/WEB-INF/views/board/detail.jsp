@@ -57,6 +57,7 @@
 				<th>제목</th>
 				<th>본문</th>
 				<th>작성일</th>
+				<th>조회수</th>
 			</tr>
 			<tr>
 				<td>${article.bno }</td>
@@ -64,6 +65,7 @@
 				<td>${article.title }</td>
 				<td>${article.content }</td>
 				<td>${article.indate}</td>
+				<td>${article.hit}</td>
 			</tr>
 		</table>
 		<c:if test="${loginUserInfo.id eq article.id}">

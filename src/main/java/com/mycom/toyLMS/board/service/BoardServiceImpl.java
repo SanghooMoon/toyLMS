@@ -31,6 +31,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public Article showDetail(int bno) {
 		// TODO Auto-generated method stub
+		bDAO.updateHit(sqlSession, bno);	// 조회수 증가
 		return bDAO.selectArticle(sqlSession, bno);
 	}
 	

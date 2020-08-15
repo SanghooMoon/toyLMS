@@ -11,8 +11,15 @@ public class Article {
 	private String title;
 	private String content;
 	private Timestamp indate;
+	private int hit;
 	
 	
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
 	public int getBno() {
 		return bno;
 	}

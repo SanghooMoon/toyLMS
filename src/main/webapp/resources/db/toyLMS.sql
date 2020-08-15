@@ -20,6 +20,11 @@ COMMIT;
 
 -- 메일전송을 위한 member 테이블 수정(이메일 컬럼 추가)
 ALTER TABLE member ADD (email VARCHAR2(80));
+-- 조회수 관련 기능을 위한 member 테이블 수정
+--ALTER TABLE member ADD (hit NUMBER(30));
+--ALTER TABLE member MODIFY hit DEFAULT 0;
+--ALTER TABLE member DROP COLUMN hit;
+COMMIT;
 
 SELECT * FROM member;
 
@@ -115,4 +120,13 @@ COMMIT;
 
 select * FROM reply WHERE bno =1;
 
+-- 조회수 기능을 위한 board 테이블 변경
+ALTER TABLE board ADD (hit NUMBER(30));
+ALTER TABLE board MODIFY hit DEFAULT 0;
+COMMIT;
+SELECT * FROM board;
 
+UPDATE board SET hit=hit+1 WHERE bno=1;
+commit;
+
+SELECT * FROM board ORDER BY hit DESC; 

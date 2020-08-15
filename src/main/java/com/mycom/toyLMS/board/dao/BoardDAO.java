@@ -63,6 +63,11 @@ public class BoardDAO {
 		// TODO Auto-generated method stub
 		return (ArrayList)sqlSession.selectList("boardMapper.selectReply", bno);
 	}
+
+	public void updateHit(SqlSessionTemplate sqlSession, int bno) {
+		// TODO Auto-generated method stub
+		sqlSession.update("boardMapper.updateHit", bno);
+	}
 	
 	 
 	

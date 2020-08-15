@@ -15,7 +15,7 @@
 	</select>
 	
 	<insert id="insertArticle">
-		INSERT INTO BOARD VALUES(BNO_SEQ.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE)
+		INSERT INTO BOARD VALUES(BNO_SEQ.NEXTVAL, #{id}, #{title}, #{content}, SYSDATE, 0)
 	</insert>
 	
 	<update id="updateArticle">
@@ -34,12 +34,17 @@
 		select * FROM reply WHERE bno=#{bno}
 	</select>
 	
+	<update id="updateHit">
+		UPDATE board SET hit=hit+1 WHERE bno=#{bno}
+	</update>
+	
 	<resultMap type="Article" id="boardResult">
 		<id column="bno" property="bno"/>
 		<result column="id" property="id"/>
 		<result column="title" property="title"/>
 		<result column="content" property="content"/>
 		<result column="indate" property="indate"/>
+		<result column="hit" property="hit"/>
 	</resultMap>
 	
 	<resultMap type="Reply" id="replyResult">
