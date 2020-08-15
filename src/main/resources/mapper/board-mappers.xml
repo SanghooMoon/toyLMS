@@ -38,6 +38,12 @@
 		UPDATE board SET hit=hit+1 WHERE bno=#{bno}
 	</update>
 	
+	<select id="selectTopHit" resultMap="boardResult">
+		<!-- XML에서는 < 부등호를 TAG로 인식하기 때문에 "The content of elements must consist of well-formed character data or markup."라는 에러가 발생하게 된다. 
+		이와 같은 문제를 해결하기 위해서는 Query안에 사용되고 있는 부등호가 문자열이라것을 의미하게 <![CDATA[  내용  ]]> "으로 감싸준다.-->
+		<![CDATA[SELECT * FROM (SELECT * FROM board ORDER BY hit DESC) WHERE ROWNUM <= 5]]>
+	</select>
+	
 	<resultMap type="Article" id="boardResult">
 		<id column="bno" property="bno"/>
 		<result column="id" property="id"/>

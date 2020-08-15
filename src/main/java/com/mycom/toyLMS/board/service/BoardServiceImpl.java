@@ -76,6 +76,13 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		return bDAO.selectReply(sqlSession, bno);
 	}
+	
+	// 최다 조회수 글 조회
+	@Override
+	public ArrayList<Article> showTopHit() {
+		// TODO Auto-generated method stub
+		return bDAO.selectTopHit(sqlSession);
+	}
 
 	
 

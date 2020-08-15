@@ -129,4 +129,7 @@ SELECT * FROM board;
 UPDATE board SET hit=hit+1 WHERE bno=1;
 commit;
 
+-- 조회수 높은 순 정렬
 SELECT * FROM board ORDER BY hit DESC; 
+-- 조회수 높은 5개 조회
+SELECT * FROM (SELECT * FROM board ORDER BY hit DESC) WHERE ROWNUM <= 5 ;

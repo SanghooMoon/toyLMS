@@ -24,6 +24,8 @@ public interface BoardService {
 
 	ArrayList<Reply> showReply(int bno);
 
+	ArrayList<Article> showTopHit();
+
 	
 
 }
